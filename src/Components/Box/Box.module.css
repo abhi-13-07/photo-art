@@ -1,0 +1,33 @@
+:root {
+  --background: transparent;
+  --light-color: rgb(162, 162, 162);
+  --box-height: 250px;
+  --box-width: 250px;
+}
+
+.box {
+  background: var(--background);
+  height: var(--box-height);
+  width: var(--box-width);
+  padding: 20px;
+  font-family: sans-serif;
+  border: 2px dashed var(--light-color);
+  border-radius: 12px;
+  color: var(--light-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 15px;
+  font-size: 90%;
+  cursor: pointer;
+  text-align: center;
+  user-select: none;
+}
+
+@media (max-width: 720px) {
+  :root {
+    --box-height: 200px;
+    --box-width: 200px;
+  }
+}
