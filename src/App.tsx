@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./App.css";
-import { withDragAndDrop, Box } from "./Components";
+import { withDragAndDrop, Box, Header } from "./Components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCamera, faImage } from "@fortawesome/free-solid-svg-icons";
 
@@ -17,7 +17,7 @@ const App = () => {
 
 	return (
 		<div className="container">
-			<h1 className="text-white">Photo Art</h1>
+			<Header />
 			<form className="form">
 				<DragAndDrop>
 					<span>Drag And Drop Files Here or Click</span>
