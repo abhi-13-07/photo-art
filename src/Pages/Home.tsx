@@ -15,6 +15,7 @@ const Home = () => {
 		const file = files[0];
 		const imageUrl = URL.createObjectURL(file);
 		dispatch({ type: ImageActionType.SET, payload: imageUrl });
+		navigate("/");
 	};
 
 	const DragAndDrop = withDragAndDrop(Box, handleFileChange);
