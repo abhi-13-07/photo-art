@@ -7,7 +7,7 @@ const initialState: ImageState = {
 
 const ImageContext = createContext<ImageContextType>({} as ImageContextType);
 
-export const useImage = (): ImageContextType | null => useContext(ImageContext);
+export const useImage = (): ImageContextType => useContext(ImageContext);
 
 export const ImageProvider = ({ children }: React.PropsWithChildren) => {
 	const reducer = (state: ImageState, { type, payload }: ImageAction): ImageState => {
