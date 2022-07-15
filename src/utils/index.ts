@@ -11,6 +11,8 @@ export const drawImage = (
 	options?: any
 ): string => {
 	const ctx = canvas.getContext("2d")!;
-	ctx.drawImage(stream, 0, 0, canvas.height, canvas.width);
+	ctx.translate(canvas.width, 0);
+	ctx.scale(-1, 1);
+	ctx.drawImage(stream, 0, 0, canvas.width, canvas.height);
 	return canvas.toDataURL("image/jpeg");
 };
