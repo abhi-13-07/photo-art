@@ -1,5 +1,5 @@
 import React, { useReducer, createContext, useContext } from "react";
-import { ImageState, ImageAction, ImageActionType, ImageContextType } from "./Types/index";
+import { ImageState, ImageAction, ImageActionType, ImageContextType } from "../Types/index";
 
 const initialState: ImageState = {
 	image: ""

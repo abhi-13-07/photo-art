@@ -10,7 +10,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 import { createCanvas, drawImage } from "../utils";
-import { useImage } from "../ImageProvider";
+import { useImage } from "../Context/ImageProvider";
 import { ImageActionType } from "../Types";
 import { Modal } from "../Components";
 

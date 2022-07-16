@@ -1,6 +1,7 @@
 :root {
   --background: transparent;
-  --light-color: rgb(162, 162, 162);
+  --light-color: gray;
+  --dark-color: #88A4DF;
   --box-height: 250px;
   --box-width: 250px;
 }
@@ -11,9 +12,7 @@
   width: var(--box-width);
   padding: 20px;
   font-family: sans-serif;
-  border: 2px dashed var(--light-color);
   border-radius: 12px;
-  color: var(--light-color);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -23,6 +22,16 @@
   cursor: pointer;
   text-align: center;
   user-select: none;
+}
+
+.box-light {
+  border: 2px dashed var(--light-color);
+  color: var(--light-color);
+}
+
+.box-dark {
+  border: 2px dashed var(--dark-color);
+  color: var(--dark-color);
 }
 
 @media (max-width: 720px) {

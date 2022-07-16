@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&family=Roboto+Mono&display=swap');
 
+:root {
+  --background-light: white;
+  --background-dark: #141A25;
+}
+
 * {
   box-sizing: border-box;
   font-family: sans-serif;
@@ -31,15 +36,21 @@
   padding: 3rem 1rem 3rem 1rem;
 }
 
-.form {
+.bg {
   display: flex;
   align-items: center;
   justify-content: space-around;
   gap: 20px;
-  background-color: white;
   border-radius: 10px;
   padding: 20px;
-  box-shadow: 1px 3px 0px 3px rgba(83, 83, 83, 0.4);
+}
+
+.bg-light {
+  background-color: var(--background-light);
+}
+
+.bg-dark {
+  background-color: var(--background-dark);
 }
 
 /* NewPicture Page Styles */

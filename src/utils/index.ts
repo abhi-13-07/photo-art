@@ -16,3 +16,14 @@ export const drawImage = (
 	ctx.drawImage(stream, 0, 0, canvas.width, canvas.height);
 	return canvas.toDataURL("image/jpeg");
 };
+
+export const getDefaultTheme = (): string => {
+	const defaultTheme = window.matchMedia("(prefers-color-scheme: dark)");
+
+	if (defaultTheme.matches) return "dark";
+	return "light";
+};
+
+export const combineWithTheme = (theme: string, className: string): string => {
+	return `${className}-${theme}`;
+};

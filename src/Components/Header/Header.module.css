@@ -1,6 +1,17 @@
 .header {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
+  justify-content: space-between;
   gap: 10px;
   color: white;
+  width: 100vw;
+  padding: 10px 50px;
+}
+
+button {
+  border: none;
+  background: none;
+  outline: none;
+  color: white;
+  cursor: pointer;
 }

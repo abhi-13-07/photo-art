@@ -1,3 +1,9 @@
+:root {
+  --background-light: white;
+  --background-dark: #141A25;
+  --color-dark: #88A4DF;
+}
+
 .modal-container {
   position: absolute;
   top: 0;
@@ -11,12 +17,20 @@
 }
 
 .modal-body {
-  background-color: white;
-  color: black;
   padding: 2rem;
   border-radius: 10px;
   width: fit-content;
   height: fit-content;
   text-align: center;
   line-height: 2.5rem;
+}
+
+.modal-body-light {
+  background-color: var(--background-light);
+  color: black;
+}
+
+.modal-body-dark {
+  background-color: var(--background-dark);
+  color: var(--color-dark);
 }
