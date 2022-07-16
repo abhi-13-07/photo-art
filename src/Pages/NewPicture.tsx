@@ -5,15 +5,18 @@ import {
 	faCameraRotate,
 	faArrowLeft,
 	faArrowRotateLeft,
-	faPaperPlane
+	faArrowRight,
+	faBan
 } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 import { createCanvas, drawImage } from "../utils";
 import { useImage } from "../ImageProvider";
 import { ImageActionType } from "../Types";
+import { Modal } from "../Components";
 
 const NewPicture = () => {
 	const [facing, setFacing] = useState("user");
+	const [hasPermission, setHasPermission] = useState(true);
 	const videoRef = useRef<HTMLVideoElement>(null);
 	const navigate = useNavigate();
 	const { state, dispatch } = useImage();
@@ -46,8 +49,11 @@ const NewPicture = () => {
 				video.addEventListener("loadedmetadata", () => {
 					video.play();
 				});
-			} catch (err) {
-				console.log(err);
+			} catch (err: any) {
+				const { message } = err;
+				if (message === "Permission denied") {
+					setHasPermission(false);
+				}
 			}
 		};
 
@@ -98,6 +104,19 @@ const NewPicture = () => {
 
 	return (
 		<section id="NewPicture">
+			{!hasPermission && (
+				<Modal>
+					<FontAwesomeIcon icon={faBan} size="3x" color="#e05879" />
+					<h3>Access Denied</h3>
+					<span>Your browser has denied to use your camera</span>
+					<p>
+						<a href="https://support.google.com/chrome/answer/2693767?hl=en&co=GENIE.Platform%3DDesktop#zippy=">
+							Click here
+						</a>{" "}
+						to know more about how to enable access to your camera.
+					</p>
+				</Modal>
+			)}
 			<div className="video-container">
 				{!image ? (
 					<video className="video" ref={videoRef} autoPlay></video>
@@ -125,7 +144,7 @@ const NewPicture = () => {
 								<FontAwesomeIcon icon={faArrowRotateLeft} size="2x" />
 							</button>
 							<button className="btn btn-round" onClick={next}>
-								<FontAwesomeIcon icon={faPaperPlane} size="2x" />
+								<FontAwesomeIcon icon={faArrowRight} size="2x" />
 							</button>
 						</>
 					)}

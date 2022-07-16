@@ -3,4 +3,4 @@ import withDragAndDrop from "./withDragAndDrop";
 import Header from "./Header/Header";
 import Modal from "./Modal/Modal";
 
-export { Box, withDragAndDrop, Header };
+export { Box, withDragAndDrop, Header, Modal };
