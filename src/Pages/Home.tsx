@@ -17,7 +17,7 @@ const Home = () => {
 		if (!files || files.length <= 0) return;
 		const file = files[0];
 		const imageUrl = URL.createObjectURL(file);
-		dispatch({ type: ImageActionType.SET, payload: imageUrl });
+		dispatch({ type: ImageActionType.SET, payload: { image: imageUrl, name: file.name } });
 		navigate("/");
 	};
 

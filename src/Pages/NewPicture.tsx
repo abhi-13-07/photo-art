@@ -13,6 +13,7 @@ import { createCanvas, drawImage } from "../utils";
 import { useImage } from "../Context/ImageProvider";
 import { ImageActionType } from "../Types";
 import { Modal } from "../Components";
+import { nanoid } from "nanoid";
 
 const NewPicture = () => {
 	const [facing, setFacing] = useState("user");
@@ -87,7 +88,7 @@ const NewPicture = () => {
 		const canvas = createCanvas(height, width);
 		const imageUrl = drawImage(video, canvas);
 
-		dispatch({ type: ImageActionType.SET, payload: imageUrl });
+		dispatch({ type: ImageActionType.SET, payload: { image: imageUrl, name: `${nanoid(6)}.jpg` } });
 	};
 
 	const navigateBack = () => {
@@ -95,7 +96,7 @@ const NewPicture = () => {
 	};
 
 	const retake = () => {
-		dispatch({ type: ImageActionType.CLEAR, payload: "" });
+		dispatch({ type: ImageActionType.CLEAR, payload: { image: "", name: "" } });
 	};
 
 	const next = () => {

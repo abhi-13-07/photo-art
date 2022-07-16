@@ -1,5 +1,6 @@
 export interface ImageState {
 	image: string;
+	name: string;
 }
 
 export enum ImageActionType {
@@ -9,7 +10,7 @@ export enum ImageActionType {
 
 export interface ImageAction {
 	type: ImageActionType;
-	payload: string;
+	payload: ImageState;
 }
 
 export interface ImageContextType {

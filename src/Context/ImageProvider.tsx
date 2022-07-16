@@ -2,7 +2,8 @@ import React, { useReducer, createContext, useContext } from "react";
 import { ImageState, ImageAction, ImageActionType, ImageContextType } from "../Types/index";
 
 const initialState: ImageState = {
-	image: ""
+	image: "",
+	name: ""
 };
 
 const ImageContext = createContext<ImageContextType>({} as ImageContextType);
@@ -13,9 +14,9 @@ export const ImageProvider = ({ children }: React.PropsWithChildren) => {
 	const reducer = (state: ImageState, { type, payload }: ImageAction): ImageState => {
 		switch (type) {
 			case ImageActionType.SET:
-				return { ...state, image: payload };
+				return { image: payload.image, name: payload.name };
 			case ImageActionType.CLEAR:
-				return { ...state, image: "" };
+				return { image: payload.image, name: payload.name };
 		}
 	};
 
