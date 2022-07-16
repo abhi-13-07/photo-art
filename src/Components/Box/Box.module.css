@@ -31,3 +31,10 @@
     --box-width: 200px;
   }
 }
+
+@media (max-width: 480px) {
+  :root {
+    --box-height: 140px;
+    --box-width: 140px;
+  }
+}
