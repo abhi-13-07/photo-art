@@ -1,3 +1,8 @@
+:root {
+  --background-dark: #141A25;
+  --background-light: white;
+}
+
 .header {
   display: flex;
   align-items: center;
@@ -8,7 +13,21 @@
   padding: 10px 50px;
 }
 
-button {
+.header-transparent {
+  background: transparent;
+}
+
+.header-light {
+  background-color: var(--background-light);
+  color: var(--background-dark);
+}
+
+.header-dark {
+  background-color: var(--background-dark);
+  color: var(--background-light);
+}
+
+.button {
   border: none;
   background: none;
   outline: none;
