@@ -14,9 +14,9 @@ export const ImageProvider = ({ children }: React.PropsWithChildren) => {
 	const reducer = (state: ImageState, { type, payload }: ImageAction): ImageState => {
 		switch (type) {
 			case ImageActionType.SET:
-				return { image: payload.image, name: payload.name };
+				return { ...state, image: payload.image, name: payload.name };
 			case ImageActionType.CLEAR:
-				return { image: payload.image, name: payload.name };
+				return { ...state, image: payload.image, name: payload.name };
 		}
 	};
 
