@@ -1,8 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&family=Roboto+Mono&display=swap');
 
 :root {
-  --background-light: white;
-  --background-dark: #141A25;
+  --background-light-1: white;
+  --background-light-2: whitesmoke;
+  --background-dark-1: #141A25;
+  --background-dark-2: #344454;
 }
 
 * {
@@ -46,11 +48,11 @@
 }
 
 .bg-light {
-  background-color: var(--background-light);
+  background-color: var(--background-light-1);
 }
 
 .bg-dark {
-  background-color: var(--background-dark);
+  background-color: var(--background-dark-1);
 }
 
 /* NewPicture Page Styles */
@@ -86,6 +88,8 @@
   justify-content: space-between;
 }
 
+/* Common */
+
 .btn {
   padding: 20px;
   height: 80px;
@@ -106,3 +110,30 @@
   cursor: pointer;
 }
 
+/* Edit Page Styles */
+
+#Edit-light {
+  background-color: var(--background-light-2);
+}
+
+#Edit-dark {
+  background-color: var(--background-dark-2);
+}
+
+.edit-img-comtainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  width: 100%;
+}
+
+.edit-img {
+  height: 500px;
+}
+
+@media (max-width: 720px) {
+  .edit-img {
+    height: 250px;
+  }
+} 
