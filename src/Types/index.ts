@@ -22,3 +22,11 @@ export interface ThemeContextType {
 	theme: string;
 	setTheme: React.Dispatch<React.SetStateAction<string>>;
 }
+
+export interface FilterProperty {
+	name: string;
+	property: string;
+	value: number;
+	range: { min: number; max: number };
+	unit: string;
+}

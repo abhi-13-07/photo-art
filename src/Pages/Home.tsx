@@ -42,9 +42,9 @@ const Home = () => {
 					<div>
 						<button onClick={switchTheme} className="btn-borderless">
 							{theme === "dark" ? (
-								<FontAwesomeIcon icon={faSun} size="2x" />
+								<FontAwesomeIcon icon={faSun} size="2x" style={{ color: "white" }} />
 							) : (
-								<FontAwesomeIcon icon={faMoon} size="2x" />
+								<FontAwesomeIcon icon={faMoon} size="2x" style={{ color: "white" }} />
 							)}
 						</button>
 					</div>

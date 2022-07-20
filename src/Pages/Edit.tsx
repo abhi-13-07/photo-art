@@ -1,18 +1,14 @@
-import { useState, useEffect } from "react";
-import { Header } from "../Components";
+import { useState, useEffect, useMemo, useCallback } from "react";
+import { Header, SideBar, Slider } from "../Components";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { useImage } from "../Context/ImageProvider";
 import { useTheme } from "../Context/ThemeProvider";
+import { FilterProperty } from "../Types";
 import { combineWithTheme } from "../utils";
+import { useNavigate } from "react-router-dom";
 
-interface FilterProperties {
-	name: string;
-	property: string;
-	value: number;
-	range: { min: number; max: number };
-	unit: string;
-}
-
-const DEFAULT_PROPERTIES: FilterProperties[] = [
+const DEFAULT_PROPERTIES: FilterProperty[] = [
 	{
 		name: "Brightness",
 		property: "brightness",
@@ -24,7 +20,7 @@ const DEFAULT_PROPERTIES: FilterProperties[] = [
 		unit: "%"
 	},
 	{
-		name: "Brightness",
+		name: "Contrast",
 		property: "contrast",
 		value: 100,
 		range: {
@@ -76,9 +72,13 @@ const DEFAULT_PROPERTIES: FilterProperties[] = [
 ];
 
 const Edit = () => {
-	const [options, setOptions] = useState<FilterProperties[]>(DEFAULT_PROPERTIES);
+	const [options, setOptions] = useState<FilterProperty[]>(DEFAULT_PROPERTIES);
+	const [optionIndex, setOptionIndex] = useState<number>(0);
 	const { state } = useImage();
 	const { theme } = useTheme();
+	const navigate = useNavigate();
+
+	const selectedOption: FilterProperty = options[optionIndex];
 
 	const { image, name } = state;
 
@@ -86,14 +86,57 @@ const Edit = () => {
 		document.title = name;
 	}, [name]);
 
+	const changeOption = (index: number) => {
+		setOptionIndex(index);
+	};
+
+	const changeStyles = (value: number) => {
+		setOptions(options => {
+			return options.map((option, idx) => {
+				if (idx !== optionIndex) return option;
+				return { ...option, value: value };
+			});
+		});
+	};
+
+	const getStyles = useCallback(() => {
+		let styles: any = { filter: "" };
+		options.forEach(option => {
+			styles.filter += `${option.property}(${option.value}${option.unit}) `;
+		});
+
+		return styles;
+	}, [options]);
+
+	const navigateBack = () => {
+		navigate("/");
+	};
+
 	return (
-		<section id={combineWithTheme(theme, "Edit")}>
+		<section id="Edit">
 			<Header background={theme === "dark" ? "dark" : "light"}>
+				<button className="btn-borderless" onClick={navigateBack}>
+					<FontAwesomeIcon icon={faArrowLeft} size="2x" />
+				</button>
 				<strong>{name}</strong>
 				<button>Save</button>
 			</Header>
-			<div className="edit-img-comtainer">
-				<img src={image} alt={name} className="edit-img" />
+			<div className={`workspace workspace-${theme}`}>
+				<div className="edit-img-comtainer">
+					<img src={image} alt={name} className="edit-img" style={getStyles()} />
+				</div>
+				<div>
+					<SideBar options={options} onChange={changeOption} selected={optionIndex} />
+				</div>
+			</div>
+			<div>
+				<Slider
+					min={selectedOption.range.min}
+					max={selectedOption.range.max}
+					value={selectedOption.value}
+					label={selectedOption.name}
+					onChange={changeStyles}
+				/>
 			</div>
 		</section>
 	);
