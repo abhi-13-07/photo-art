@@ -1,0 +1,55 @@
+:root {
+  --btn-dark-background: #242c3d;
+  --btn-light-background: whitesmoke;
+  --btn-primary-background: #88a4df;
+}
+
+.btn {
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+}
+
+.btn-lg {
+  height: 80px;
+  width: 80px;
+}
+
+.btn-md {
+  height: 60px;
+  width: 60px;
+}
+
+.btn-sm {
+  height: 40px;
+  width: 40px;
+}
+
+.btn-light {
+  background-color: var(--btn-light-background);
+}
+
+.btn-dark {
+  background-color: var(--btn-dark-background);
+}
+
+.btn-primary {
+  background-color: var(--btn-primary-background);
+}
+
+.btn-transparent {
+  color: inherit;
+  background: none;
+  border: none;
+}
+
+.btn-round {
+  border-radius: 50%;
+}
+
+.btn-fit {
+  width: fit-content;
+  height: auto;
+}
