@@ -1,11 +1,10 @@
-import { useState, useEffect, useMemo, useCallback } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Header, SideBar, Slider } from "../Components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { useImage } from "../Context/ImageProvider";
 import { useTheme } from "../Context/ThemeProvider";
 import { FilterProperty } from "../Types";
-import { combineWithTheme } from "../utils";
 import { useNavigate } from "react-router-dom";
 
 const DEFAULT_PROPERTIES: FilterProperty[] = [
