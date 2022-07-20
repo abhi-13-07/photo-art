@@ -7,6 +7,7 @@ import { useTheme } from "../Context/ThemeProvider";
 import { FilterProperty } from "../Types";
 import { useNavigate } from "react-router-dom";
 import { createCanvas, downloadImage, drawImage } from "../utils";
+import { useTitle } from "../Hooks/useTitle";
 
 const DEFAULT_PROPERTIES: FilterProperty[] = [
 	{
@@ -83,9 +84,7 @@ const Edit = () => {
 
 	const { image, name } = state;
 
-	useEffect(() => {
-		document.title = name;
-	}, [name]);
+	useTitle(`${name} | Edit`);
 
 	const changeOption = (index: number) => {
 		setOptionIndex(index);

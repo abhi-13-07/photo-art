@@ -7,11 +7,14 @@ import { useImage } from "../Context/ImageProvider";
 import { ImageActionType } from "../Types";
 import { useTheme } from "../Context/ThemeProvider";
 import { combineWithTheme } from "../utils";
+import { useTitle } from "../Hooks/useTitle";
 
 const Home = () => {
 	const { dispatch } = useImage();
 	const navigate = useNavigate();
 	const { theme, setTheme } = useTheme();
+
+	useTitle("Photo Art");
 
 	const handleFileChange = (files: FileList) => {
 		if (!files || files.length <= 0) return;

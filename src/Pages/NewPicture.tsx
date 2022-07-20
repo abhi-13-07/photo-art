@@ -14,6 +14,7 @@ import { useImage } from "../Context/ImageProvider";
 import { ImageActionType } from "../Types";
 import { Modal } from "../Components";
 import { nanoid } from "nanoid";
+import { useTitle } from "../Hooks/useTitle";
 
 const NewPicture = () => {
 	const [facing, setFacing] = useState("user");
@@ -22,6 +23,8 @@ const NewPicture = () => {
 	const navigate = useNavigate();
 	const { state, dispatch } = useImage();
 	const { image } = state;
+
+	useTitle("Take New Picture");
 
 	useEffect(() => {
 		let stream: MediaStream;
