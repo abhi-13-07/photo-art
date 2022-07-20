@@ -1,7 +1,7 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { Header, SideBar, Slider } from "../Components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { faArrowLeft, faDownload } from "@fortawesome/free-solid-svg-icons";
 import { useImage } from "../Context/ImageProvider";
 import { useTheme } from "../Context/ThemeProvider";
 import { FilterProperty } from "../Types";
@@ -73,6 +73,7 @@ const DEFAULT_PROPERTIES: FilterProperty[] = [
 const Edit = () => {
 	const [options, setOptions] = useState<FilterProperty[]>(DEFAULT_PROPERTIES);
 	const [optionIndex, setOptionIndex] = useState<number>(0);
+	const imgRef = useRef<HTMLImageElement>(null);
 	const { state } = useImage();
 	const { theme } = useTheme();
 	const navigate = useNavigate();
@@ -114,15 +115,18 @@ const Edit = () => {
 	return (
 		<section id="Edit">
 			<Header background={theme === "dark" ? "dark" : "light"}>
-				<button className="btn-borderless" onClick={navigateBack}>
+				<button className="btn btn-transparent" onClick={navigateBack}>
 					<FontAwesomeIcon icon={faArrowLeft} size="2x" />
 				</button>
 				<strong>{name}</strong>
-				<button>Save</button>
+				<button className="btn btn-primary btn-fit">
+					<FontAwesomeIcon icon={faDownload} style={{ marginRight: "10px" }} />
+					<span>Save</span>
+				</button>
 			</Header>
 			<div className={`workspace workspace-${theme}`}>
 				<div className="edit-img-comtainer">
-					<img src={image} alt={name} className="edit-img" style={getStyles()} />
+					<img src={image} alt={name} className="edit-img" style={getStyles()} ref={imgRef} />
 				</div>
 				<div>
 					<SideBar options={options} onChange={changeOption} selected={optionIndex} />

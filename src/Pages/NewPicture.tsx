@@ -129,22 +129,22 @@ const NewPicture = () => {
 				<div className="controls">
 					{!image ? (
 						<>
-							<button className="btn-borderless" onClick={navigateBack}>
+							<button className="btn btn-transparent" onClick={navigateBack}>
 								<FontAwesomeIcon icon={faArrowLeft} size="2x" />
 							</button>
-							<button className="btn btn-round" onClick={takePhoto}>
+							<button className="btn btn-light btn-lg btn-round" onClick={takePhoto}>
 								<FontAwesomeIcon icon={faCamera} size="3x" />
 							</button>
-							<button className="btn-borderless" onClick={flipCamera}>
+							<button className="btn btn-transparent" onClick={flipCamera}>
 								<FontAwesomeIcon icon={faCameraRotate} size="2x" />
 							</button>
 						</>
 					) : (
 						<>
-							<button className="btn-borderless" onClick={retake}>
+							<button className="btn btn-transparent" onClick={retake}>
 								<FontAwesomeIcon icon={faArrowRotateLeft} size="2x" />
 							</button>
-							<button className="btn btn-round" onClick={next}>
+							<button className="btn btn-light btn-lg btn-round" onClick={next}>
 								<FontAwesomeIcon icon={faArrowRight} size="2x" />
 							</button>
 						</>

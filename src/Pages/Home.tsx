@@ -40,7 +40,7 @@ const Home = () => {
 						<h1 style={{ color: "white" }}>Photo Art</h1>
 					</div>
 					<div>
-						<button onClick={switchTheme} className="btn-borderless">
+						<button onClick={switchTheme} className="btn btn-transparent">
 							{theme === "dark" ? (
 								<FontAwesomeIcon icon={faSun} size="2x" style={{ color: "white" }} />
 							) : (
