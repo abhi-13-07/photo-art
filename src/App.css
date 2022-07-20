@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&family=Roboto+Mono&display=swap');
+@import "./styles/button.css";
 
 :root {
   --background-light-1: white;
@@ -84,34 +85,13 @@ body {
   background-color: rgba(0, 0, 0, 0.5);
   bottom: 0;
   width: 100%;
+  color: white;
 }
 
 .controls {
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
-
-/* Common */
-
-.btn {
-  padding: 20px;
-  height: 80px;
-  width: 80px;
-  cursor: pointer;
-  border: none;
-  background-color: white;
-}
-
-.btn-round {
-  border-radius: 50%;
-}
-
-.btn-borderless {
-  color: inherit;
-  background: none;
-  border: none;
-  cursor: pointer;
 }
 
 /* Edit Page Styles */
