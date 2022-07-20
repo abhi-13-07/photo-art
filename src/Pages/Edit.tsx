@@ -6,6 +6,7 @@ import { useImage } from "../Context/ImageProvider";
 import { useTheme } from "../Context/ThemeProvider";
 import { FilterProperty } from "../Types";
 import { useNavigate } from "react-router-dom";
+import { createCanvas, downloadImage, drawImage } from "../utils";
 
 const DEFAULT_PROPERTIES: FilterProperty[] = [
 	{
@@ -112,6 +113,17 @@ const Edit = () => {
 		navigate("/");
 	};
 
+	const savePhoto = () => {
+		const img = document.createElement("img");
+		img.src = image;
+		const canvas = createCanvas(img.naturalHeight, img.naturalWidth);
+		if (!imgRef) return;
+
+		const filters = window.getComputedStyle(imgRef.current as Element).filter;
+		const imgUrl = drawImage(img, canvas, { filter: filters });
+		downloadImage(imgUrl, name);
+	};
+
 	return (
 		<section id="Edit">
 			<Header background={theme === "dark" ? "dark" : "light"}>
@@ -119,7 +131,7 @@ const Edit = () => {
 					<FontAwesomeIcon icon={faArrowLeft} size="2x" />
 				</button>
 				<strong>{name}</strong>
-				<button className="btn btn-primary btn-fit">
+				<button className="btn btn-primary btn-fit" onClick={savePhoto}>
 					<FontAwesomeIcon icon={faDownload} style={{ marginRight: "10px" }} />
 					<span>Save</span>
 				</button>
