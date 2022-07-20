@@ -1,6 +1,8 @@
 :root {
   --background-dark: #141A25;
   --background-light: white;
+  --color-dark: #88A4DF;
+  --color-light: #141A25;
 }
 
 .header {
@@ -8,7 +10,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 10px;
-  color: white;
+  color: inherit;
   width: 100vw;
   padding: 10px 50px;
 }
@@ -19,12 +21,12 @@
 
 .header-light {
   background-color: var(--background-light);
-  color: var(--background-dark);
+  color: var(--color-white);
 }
 
 .header-dark {
   background-color: var(--background-dark);
-  color: var(--background-light);
+  color: var(--color-dark);
 }
 
 .button {
