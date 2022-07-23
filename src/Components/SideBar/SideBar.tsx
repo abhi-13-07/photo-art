@@ -16,6 +16,7 @@ const SideBar = ({ options, onChange, selected }: Props) => {
 		<nav className={`${styles.sidebar} ${styles[combineWithTheme(theme, "sidebar")]}`}>
 			{options.map((option, index) => (
 				<span
+					key={index}
 					className={`${selected === index && styles["active"]} ${styles["sidebar-item"]}`}
 					onClick={() => onChange(index)}
 				>

@@ -69,7 +69,13 @@ body {
 }
 
 .video-container {
-  text-align: center;
+  background-color: black;
+  height: 100vh;
+  width: 100%;
+  margin-right: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .video {
@@ -77,6 +83,10 @@ body {
   height: 100vh;
   transform: scaleX(-1);
   -webkit-transform: scaleX(-1);
+}
+
+.preview {
+  height: 100vh;
 }
 
 .controls-container {
@@ -131,4 +141,11 @@ body {
   .edit-img {
     height: 250px;
   }
-} 
+}
+
+@media (max-width: 1240px) {
+  .preview {
+    width: 100%;
+    height: auto;
+  }
+}

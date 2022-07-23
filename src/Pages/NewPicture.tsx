@@ -89,7 +89,7 @@ const NewPicture = () => {
 		const width = video.videoWidth;
 
 		const canvas = createCanvas(height, width);
-		const imageUrl = drawImage(video, canvas);
+		const imageUrl = drawImage(video, canvas, { translate: true });
 
 		dispatch({ type: ImageActionType.SET, payload: { image: imageUrl, name: `${nanoid(6)}.jpg` } });
 	};

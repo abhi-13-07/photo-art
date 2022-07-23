@@ -8,12 +8,14 @@ export const createCanvas = (height: number, width: number): HTMLCanvasElement =
 export const drawImage = (
 	stream: HTMLImageElement | HTMLVideoElement,
 	canvas: HTMLCanvasElement,
-	options?: { filter: string }
+	options?: { filter?: string; translate?: boolean }
 ): string => {
 	const ctx = canvas.getContext("2d")!;
 
-	ctx.translate(canvas.width, 0);
-	ctx.scale(-1, 1);
+	if (options?.translate) {
+		ctx.translate(canvas.width, 0);
+		ctx.scale(-1, 1);
+	}
 
 	if (options?.filter) {
 		ctx.filter = options.filter;
