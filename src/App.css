@@ -15,10 +15,6 @@
   padding: 0;
 }
 
-body {
-  overflow: hidden;
-}
-
 /* Home Page Styles */
 
 #Home {
@@ -107,21 +103,20 @@ body {
 /* Edit Page Styles */
 
 #Edit {
-  overflow-x: hidden;
-  overflow-y: hidden;
+  overflow: hidden;
 }
 
 .edit-img-comtainer {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
+  min-height: 90vh;
   width: 100%;
 }
 
 .workspace {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
 }
 
@@ -134,7 +129,13 @@ body {
 }
 
 .edit-img {
-  height: 300px;
+  height: 350px;
+}
+
+.edit-footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }
 
 @media (max-width: 720px) {

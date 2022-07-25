@@ -1,0 +1,48 @@
+:root {
+  --carousel-bg-light: white;
+  --carousel-bg-dark: #141A25;
+  --carousel-color-light: #3E4E6D;
+  --carousel-color-dark: #88A4DF;
+}
+
+.carousel-menu {
+  width: 100%;
+  padding: 15px;
+  background-color: var(--carousel-bg-dark);
+  color: var(--carousel-color-dark);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  overflow-x: scroll;
+}
+
+.carousel-menu::-webkit-scrollbar {
+  height: 5px;
+}
+
+.carousel-menu::-webkit-scrollbar-track {
+  background-color: var(--carousel-bg-dark);
+}
+
+.carousel-menu::-webkit-scrollbar-thumb {
+  background-color: var(--carousel-color-light);
+  border-radius: 5px;
+}
+
+.carousel-menu-item {
+  min-width: 100px;
+  cursor: pointer;
+  text-align: center;
+  user-select: none;
+}
+
+.active-item {
+  width: fit-content;
+  background-color: var(--carousel-color-dark);
+  color: var(--carousel-bg-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  border-radius: 10px;
+}

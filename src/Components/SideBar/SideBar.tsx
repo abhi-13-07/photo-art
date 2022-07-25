@@ -5,15 +5,20 @@ import styles from "./SideBar.module.css";
 
 interface Props {
 	options: FilterProperty[];
-	onChange: (index: number) => void;
 	selected: number;
+	hide: boolean;
+	onChange: (index: number) => void;
 }
 
-const SideBar = ({ options, onChange, selected }: Props) => {
+const SideBar = ({ options, onChange, selected, hide }: Props) => {
 	const { theme } = useTheme();
 
 	return (
-		<nav className={`${styles.sidebar} ${styles[combineWithTheme(theme, "sidebar")]}`}>
+		<nav
+			className={`${styles.sidebar} ${styles[combineWithTheme(theme, "sidebar")]} ${
+				hide && styles.hide
+			}`}
+		>
 			{options.map((option, index) => (
 				<span
 					key={index}

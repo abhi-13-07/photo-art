@@ -1,5 +1,5 @@
 import { useState, useCallback, useRef } from "react";
-import { Header, SideBar, Slider } from "../Components";
+import { CarouselMenu, Header, SideBar, Slider } from "../Components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faDownload } from "@fortawesome/free-solid-svg-icons";
 import { useImage } from "../Context/ImageProvider";
@@ -8,6 +8,7 @@ import { FilterProperty } from "../Types";
 import { useNavigate } from "react-router-dom";
 import { createCanvas, downloadImage, drawImage } from "../utils";
 import { useTitle } from "../Hooks/useTitle";
+import { useWindowWidth } from "../Hooks/useWindowWidth";
 
 const DEFAULT_PROPERTIES: FilterProperty[] = [
 	{
@@ -69,12 +70,33 @@ const DEFAULT_PROPERTIES: FilterProperty[] = [
 			max: 20
 		},
 		unit: "px"
+	},
+	{
+		name: "Grayscale",
+		property: "grayscale",
+		value: 0,
+		range: {
+			min: 0,
+			max: 100
+		},
+		unit: "%"
+	},
+	{
+		name: "Invert",
+		property: "invert",
+		value: 0,
+		range: {
+			min: 0,
+			max: 100
+		},
+		unit: "%"
 	}
 ];
 
 const Edit = () => {
 	const [options, setOptions] = useState<FilterProperty[]>(DEFAULT_PROPERTIES);
 	const [optionIndex, setOptionIndex] = useState<number>(0);
+	const width = useWindowWidth();
 	const imgRef = useRef<HTMLImageElement>(null);
 	const { state } = useImage();
 	const { theme } = useTheme();
@@ -140,10 +162,18 @@ const Edit = () => {
 					<img src={image} alt={name} className="edit-img" style={getStyles()} ref={imgRef} />
 				</div>
 				<div>
-					<SideBar options={options} onChange={changeOption} selected={optionIndex} />
+					<SideBar
+						options={options}
+						onChange={changeOption}
+						selected={optionIndex}
+						hide={width <= 650}
+					/>
 				</div>
 			</div>
-			<div>
+			<footer className="edit-footer">
+				{width <= 650 && (
+					<CarouselMenu options={options} selected={optionIndex} onChange={changeOption} />
+				)}
 				<Slider
 					min={selectedOption.range.min}
 					max={selectedOption.range.max}
@@ -151,7 +181,7 @@ const Edit = () => {
 					label={selectedOption.name}
 					onChange={changeStyles}
 				/>
-			</div>
+			</footer>
 		</section>
 	);
 };

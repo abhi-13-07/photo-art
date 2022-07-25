@@ -1,3 +1,5 @@
+@import "../../styles/variable.css";
+
 :root {
   --light-slider-background: whitesmoke;
   --dark-slider-background: #3E4E6D;
@@ -7,8 +9,6 @@
 }
 
 .slider-container {
-  position: absolute;
-  bottom: 0;
   width: 100%;
   display: flex;
   align-items: center;
@@ -17,6 +17,7 @@
   background-color: var(--dark-background);
   color: var(--slider-thumb-color);
   padding: 15px;
+  height: var(--slider-container-height);
 }
 
 .slider-container-light {

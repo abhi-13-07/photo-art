@@ -1,3 +1,5 @@
+@import "../../styles/variable.css";
+
 :root {
   --light-background: white;
   --dark-background: #141A25;
@@ -9,7 +11,7 @@
   padding: 10px;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  min-height: calc(95vh - var(--slider-container-height));
   min-width: 300px;
 }
 
@@ -34,4 +36,8 @@
   background-color: var(--dark-color);
   color: var(--dark-background);
   border-radius: 5px;
+}
+
+.hide {
+  display: none;
 }
