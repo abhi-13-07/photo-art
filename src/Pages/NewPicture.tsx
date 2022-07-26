@@ -9,7 +9,7 @@ import {
 	faBan
 } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
-import { createCanvas, drawImage } from "../utils";
+import { createCanvas, detectMobileDevice, drawImage } from "../utils";
 import { useImage } from "../Context/ImageProvider";
 import { ImageActionType } from "../Types";
 import { Modal } from "../Components";
@@ -23,6 +23,9 @@ const NewPicture = () => {
 	const navigate = useNavigate();
 	const { state, dispatch } = useImage();
 	const { image } = state;
+
+	const isUserFacing = facing === "user";
+	const isMobileDevice = detectMobileDevice();
 
 	useTitle("Take New Picture");
 
@@ -77,7 +80,7 @@ const NewPicture = () => {
 	}, [facing, image]);
 
 	const flipCamera = () => {
-		setFacing("environment");
+		setFacing(prev => (prev === "user" ? "environment" : "user"));
 	};
 
 	const takePhoto = () => {
@@ -89,7 +92,7 @@ const NewPicture = () => {
 		const width = video.videoWidth;
 
 		const canvas = createCanvas(height, width);
-		const imageUrl = drawImage(video, canvas, { translate: true });
+		const imageUrl = drawImage(video, canvas, { translate: isUserFacing });
 
 		dispatch({ type: ImageActionType.SET, payload: { image: imageUrl, name: `${nanoid(6)}.jpg` } });
 	};
@@ -123,7 +126,7 @@ const NewPicture = () => {
 			)}
 			<div className="video-container">
 				{!image ? (
-					<video className="video" ref={videoRef} autoPlay></video>
+					<video className={`video ${isUserFacing && "transform"}`} ref={videoRef} autoPlay></video>
 				) : (
 					<img className="preview" src={image} alt="user" />
 				)}
@@ -138,7 +141,11 @@ const NewPicture = () => {
 							<button className="btn btn-light btn-lg btn-round" onClick={takePhoto}>
 								<FontAwesomeIcon icon={faCamera} size="3x" />
 							</button>
-							<button className="btn btn-transparent" onClick={flipCamera}>
+							<button
+								disabled={!isMobileDevice}
+								className="btn btn-transparent"
+								onClick={flipCamera}
+							>
 								<FontAwesomeIcon icon={faCameraRotate} size="2x" />
 							</button>
 						</>

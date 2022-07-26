@@ -47,3 +47,17 @@ export const downloadImage = (url: string, name: string): void => {
 
 	anchor.click();
 };
+
+export const detectMobileDevice = (): boolean => {
+	const devices = [
+		/Android/i,
+		/webOS/i,
+		/iPhone/i,
+		/iPad/i,
+		/iPod/i,
+		/BlackBerry/i,
+		/Windows Phone/i
+	];
+
+	return devices.some(device => navigator.userAgent.match(device));
+};

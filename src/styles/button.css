@@ -12,6 +12,11 @@
   outline: none;
 }
 
+.btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
 .btn-lg {
   height: 80px;
   width: 80px;
