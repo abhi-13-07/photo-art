@@ -142,6 +142,9 @@
 }
 
 @media (max-width: 720px) {
+  .edit-img-comtainer {
+    min-height: 80vh;
+  }
   .edit-img {
     height: 250px;
   }
