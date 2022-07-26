@@ -8,7 +8,6 @@
 .carousel-menu {
   width: 100%;
   padding: 15px;
-  background-color: var(--carousel-bg-dark);
   color: var(--carousel-color-dark);
   display: flex;
   align-items: center;
@@ -16,16 +15,33 @@
   overflow-x: scroll;
 }
 
+.carousel-menu-dark {
+  background-color: var(--carousel-bg-dark);
+}
+
+.carousel-menu-light {
+  background-color: var(--carousel-bg-light);
+}
+
 .carousel-menu::-webkit-scrollbar {
   height: 5px;
 }
 
-.carousel-menu::-webkit-scrollbar-track {
+.carousel-menu-dark::-webkit-scrollbar-track {
   background-color: var(--carousel-bg-dark);
 }
 
-.carousel-menu::-webkit-scrollbar-thumb {
+.carousel-menu-dark::-webkit-scrollbar-thumb {
   background-color: var(--carousel-color-light);
+  border-radius: 5px;
+}
+
+.carousel-menu-light::-webkit-scrollbar-track {
+  background-color: var(--carousel-bg-light);
+}
+
+.carousel-menu-light::-webkit-scrollbar-thumb {
+  background-color: var(--carousel-color-dark);
   border-radius: 5px;
 }
 

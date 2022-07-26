@@ -141,6 +141,13 @@
   width: 100%;
 }
 
+.truncate {
+  max-width: 100px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 @media (max-width: 720px) {
   .edit-img-comtainer {
     min-height: 80vh;
