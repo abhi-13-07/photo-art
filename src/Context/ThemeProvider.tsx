@@ -1,4 +1,5 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
+import React, { createContext, useContext, useEffect } from "react";
+import { useLocalStorage } from "../Hooks/useLocalStorage";
 import { ThemeContextType } from "../Types";
 import { getDefaultTheme } from "../utils";
 
@@ -10,7 +11,7 @@ const ThemeContext = createContext<ThemeContextType>({
 export const useTheme = (): ThemeContextType => useContext(ThemeContext);
 
 export const ThemeProvider = ({ children }: React.PropsWithChildren) => {
-	const [theme, setTheme] = useState<string>(getDefaultTheme());
+	const [theme, setTheme] = useLocalStorage<string>("theme", getDefaultTheme);
 
 	useEffect(() => {
 		const themeMediaQuery: MediaQueryList = window.matchMedia("(prefers-color-scheme: dark)");
