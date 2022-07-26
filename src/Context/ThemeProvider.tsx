@@ -14,6 +14,7 @@ export const ThemeProvider = ({ children }: React.PropsWithChildren) => {
 	const [theme, setTheme] = useLocalStorage<string>("theme", getDefaultTheme);
 
 	useEffect(() => {
+		console.log("Effect!!");
 		const themeMediaQuery: MediaQueryList = window.matchMedia("(prefers-color-scheme: dark)");
 
 		const handleMediaThemeChange = (e: MediaQueryListEvent) => {
@@ -29,7 +30,7 @@ export const ThemeProvider = ({ children }: React.PropsWithChildren) => {
 		return () => {
 			themeMediaQuery.removeEventListener("change", handleMediaThemeChange);
 		};
-	}, []);
+	}, [setTheme]);
 
 	return <ThemeContext.Provider value={{ theme, setTheme }}>{children}</ThemeContext.Provider>;
 };
