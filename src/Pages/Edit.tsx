@@ -151,7 +151,7 @@ const Edit = () => {
 				<button className="btn btn-transparent" onClick={navigateBack}>
 					<FontAwesomeIcon icon={faArrowLeft} size="2x" />
 				</button>
-				<strong>{name}</strong>
+				<strong className="truncate">{name}</strong>
 				<button className="btn btn-primary btn-fit" onClick={savePhoto}>
 					<FontAwesomeIcon icon={faDownload} style={{ marginRight: "10px" }} />
 					<span>Save</span>
