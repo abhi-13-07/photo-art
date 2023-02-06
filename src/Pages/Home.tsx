@@ -40,7 +40,7 @@ const Home = () => {
 					<div></div>
 					<div style={{ display: "flex", alignItems: "flex-end", gap: "10px" }}>
 						<FontAwesomeIcon icon={faCameraRetro} size="3x" style={{ color: "white" }} />
-						<h1 style={{ color: "white" }}>Photo Art</h1>
+						<h1 style={{ color: "white" }}>Photo Art!!</h1>
 					</div>
 					<div>
 						<button onClick={switchTheme} className="btn btn-transparent">
